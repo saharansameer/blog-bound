@@ -66,7 +66,7 @@ function Footer() {
 
         {/* Copyright Notice */}
         <p className="text-xs text-center">
-          &copy; {new Date().getFullYear()} Mega Blog - All rights reserved.
+          &copy; 2025 Blog Bound - All rights reserved.
         </p>
       </div>
     </div>
