@@ -1,6 +1,6 @@
-# MegaBlog
+# Blog Bound
 
-MegaBlog is a dynamic blogging platform built with modern web technologies. It allows users to create, edit, read, and delete blog posts with ease. The application provides both light and dark theme modes, ensuring a customizable and user-friendly experience.
+A simple blogging platform built with React, Redux, Tailwind CSS, TinyMCE, Apprwrite and more. It allows users to create, edit, read, and delete blog posts with ease. The application provides both light and dark theme modes, ensuring a customizable and user-friendly experience.
 
 ---
 
@@ -59,6 +59,6 @@ MegaBlog is a dynamic blogging platform built with modern web technologies. It a
 ---
 
 ## Deployment
-- <a href="https://megablogx.vercel.app/" target="_blank">`Click me to visit MegaBlog`</a>
+- <a href="https://blogbound.vercel.app/" target="_blank">`Click me to visit Blog Bound`</a>
 
 ---
