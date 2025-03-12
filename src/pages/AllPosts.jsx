@@ -5,23 +5,18 @@ import { setPosts } from '../features/post/postSlice';
 import { useSelector, useDispatch } from 'react-redux';
 function AllPosts() {
   const dispatch = useDispatch();
-  const authStatus = useSelector((state) => state.auth.status);
   const posts = useSelector((state) => state.post.posts);
 
   useEffect(() => {
-    if (authStatus) {
-      const fetchPosts = async () => {
-        const data = await dbService.getAllPosts();
-        if (data) dispatch(setPosts(data.documents));
-      }
-  
-      fetchPosts();
-    } else {
-      dispatch(setPosts([]));
-    }
-    
-  }, [dispatch, authStatus]);
 
+    const fetchPosts = async () => {
+      const data = await dbService.getAllPosts();
+      if (data) dispatch(setPosts(data.documents));
+    }
+  
+    fetchPosts();
+
+  }, [dispatch]);
   return (
   <div className='w-full py-8'>
     <div className='flex flex-wrap justify-center gap-5 sm:gap-20'>
