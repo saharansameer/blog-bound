@@ -33,14 +33,7 @@ export default function ViewPost() {
   };
 
   return post ? (
-    <div className="py-8">
-        <div className="w-full flex justify-center mb-4 border rounded-xl p-2">
-            <img
-            src={dbService.getFilePreview(post.featuredImage)}
-            alt={post.title}
-            className="rounded-xl"
-            />
-        </div>
+    <div className="py-2">
         {isAuthor && (
           <div className="w-full flex justify-end gap-5">
               <Link to={`/edit/${post.$id}`}>
@@ -49,6 +42,10 @@ export default function ViewPost() {
               <Button text={"Delete"} className={'px-2 py-1 rounded-md'} onClick={deletePost} />
           </div>
         )}
+        <div className="py-2 flex flex-row items-center gap-1">
+            <img src="/user-circle.svg" alt="Post By" className="w-6"/>
+            <h3 className="text-xs sm:text-sm font-bold dark:text-white">{post.userName}</h3>
+        </div>
         <div className="w-full mb-6">
             <h1 className="text-2xl font-bold dark:text-white">{post.title}</h1>
         </div>

@@ -11,6 +11,8 @@ function App() {
         {<Header />}
       </div>
 
+      <div className="py-2 px-4 text-xs sm:text-base text-center font-mono dark:text-white">Images removed because <a className="hover:underline text-pink-500" href="https://appwrite.io/">Appwrite</a> wants $15/month and my wallet said no.</div>
+
       <div className='w-full max-w-screen-sm mx-auto min-h-screen px-5 responsive'>
         <Outlet />
       </div>

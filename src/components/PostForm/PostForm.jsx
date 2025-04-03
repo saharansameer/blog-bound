@@ -21,21 +21,13 @@ function PostForm({post}) {
     
     const submit = async (data) => {
         if (post) {
-            const file = data.image[0] ? await dbService.uploadFile(data.image[0]) : null;
-            if (file) dbService.deleteFile(post.featuredImage);
 
-            const dbPost = await dbService.updatePost(post.$id, {...data, featuredImage: file ? file.$id : undefined});
+            const dbPost = await dbService.updatePost(post.$id, {...data, featuredImage: undefined});
             if (dbPost) navigate(`/posts/${dbPost.$id}`); 
 
         } else {
-            const file = await dbService.uploadFile(data.image[0]);
-            console.log(file)
-            if (file) {
-                const fileId = file.$id;
-                data.featuredImage = fileId;
-                const dbPost = await dbService.createPost({...data, userId: userData.$id, userName: userData.name});
-                if (dbPost) navigate(`/posts/${dbPost.$id}`);
-            }
+            const dbPost = await dbService.createPost({...data, userId: userData.$id, userName: userData.name});
+            if (dbPost) navigate(`/posts/${dbPost.$id}`);
         }
     };
 
@@ -67,7 +59,7 @@ function PostForm({post}) {
             setValue('slug', slugTransform(post.title), {shouldValidate: true});
         }
     }, 
-    [post?.title, post?.content, post?.status, post?.featuredImage]);
+    [post?.title, post?.content, post?.status]);
 
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-col gap-5">
@@ -90,22 +82,6 @@ function PostForm({post}) {
             <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
         </div>
         <div className="w-full px-2">
-            <Input
-            label="Featured Image :"
-            type="file"
-            className="mb-4 text-sm"
-            accept="image/png, image/jpg, image/jpeg, image/gif"
-            {...register("image", { required: !post })}
-            />
-            {post && (
-                <div className="w-full mb-4">
-                    <img
-                    src={dbService.getFilePreview(post.featuredImage)}
-                    alt={post.title}
-                    className="rounded-lg"
-                    />
-                </div>
-            )}
             <Select
                 options={["active", "inactive"]}
                 label={{text: "Status : ", style: "font-semibold dark:text-white"}}
